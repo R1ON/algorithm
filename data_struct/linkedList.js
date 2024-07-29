@@ -5,61 +5,108 @@ class Node {
     }
 }
 
-// Мы можем самостоятельно связать ноды,
-// либо воспользоваться LinkedList, для автоматического связывания
-// const node1 = new Node(10);
-
-// const node2 = new Node(20);
-// node1.nextNode = node2;
-
-// const node3 = new Node(30);
-// node2.nextNode = node2;
-
-// console.log(node1.value);
-// console.log(node1.nextNode.value);
-
 class LinkedList {
     constructor() {
-        this.head = null;
+        this.head = new Node();
+        this.tail = null;
         this.length = 0;
     }
 
-    append = (value) => {
-        if (this.head === null) {
-            this.head = new Node(value);
-            this.length = 1;
+    appendStart = (value) => {
+        const newNode = new Node(value);
+        this.length++;
+
+        newNode.nextNode = this.head.nextNode;
+        this.head.nextNode = newNode;
+
+        if (this.tail === null) {
+            this.tail = newNode;
+        }
+    }
+
+    appendEnd = (value) => {
+        const newNode = new Node(value);
+        this.length++;
+
+        if (this.tail === null) {
+            this.head.nextNode = newNode;
+            this.tail = newNode;
             return;
         }
 
-        let current = this.head;
-        while (current.nextNode !== null) {
+        this.tail.nextNode = newNode;
+        this.tail = newNode;
+    }
+
+    appendAfterValue = (target, value) => {
+        const newNode = new Node(value);
+
+        let current = this.head.nextNode;
+
+        while (current !== null) {
+            if (current.value === target) {
+                newNode.nextNode = current.nextNode;
+                current.nextNode = newNode;
+                
+                if (this.tail === current) {
+                    this.tail = newNode;
+                }
+
+                this.length++;
+                return;
+            }
+
             current = current.nextNode;
         }
 
-        current.nextNode = new Node(value);
-        this.length++;
+        throw new Error(`'target' = ${target} не найден`);
+    }
+
+    deleteNode = (target) => {
+        let current = this.head;
+
+        while (current.nextNode !== null) {
+            if (current.nextNode.value === target) {
+                if (this.tail === current.nextNode) {
+                    this.tail = current === this.head ? null : current;
+                }
+
+                current.nextNode = current.nextNode.nextNode;
+
+                this.length--;
+                return;
+            }
+
+            current = current.nextNode;
+        }
+
+        throw new Error(`'target' = ${target} не найден`);
     }
 
     toString = () => {
-        const values = [this.head.value];
+        let current = this.head.nextNode;
 
-        let current = this.head;
+        const result = [];
+        
         while (current !== null) {
+            result.push(current.value);
             current = current.nextNode;
-
-            if (current) {
-                values.push(current.value);
-            }
         }
 
-        return `[${values.join(', ')}]`;
+        return `[${result.join(', ')}]`;
     }
 }
 
 const linkedList = new LinkedList();
-linkedList.append(10);
-linkedList.append(20);
-linkedList.append(30);
-console.log(linkedList.length);
+linkedList.appendStart(10);
+linkedList.appendStart(20);
+linkedList.appendEnd(30);
+linkedList.appendEnd(40);
+linkedList.appendAfterValue(30, 11);
+linkedList.deleteNode(10);
+
+console.log('length:', linkedList.length);
+console.log('head:', linkedList.head);
+console.log('tail:', linkedList.tail);
 console.log(linkedList.toString());
 
