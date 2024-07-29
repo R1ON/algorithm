@@ -97,16 +97,18 @@ class LinkedList {
     }
 }
 
-const linkedList = new LinkedList();
-linkedList.appendStart(10);
-linkedList.appendStart(20);
-linkedList.appendEnd(30);
-linkedList.appendEnd(40);
-linkedList.appendAfterValue(30, 11);
-linkedList.deleteNode(10);
+// const linkedList = new LinkedList();
+// linkedList.appendStart(10);
+// linkedList.appendStart(20);
+// linkedList.appendEnd(30);
+// linkedList.appendEnd(40);
+// linkedList.appendAfterValue(30, 11);
+// linkedList.deleteNode(10);
 
-console.log('length:', linkedList.length);
-console.log('head:', linkedList.head);
-console.log('tail:', linkedList.tail);
-console.log(linkedList.toString());
+// console.log('length:', linkedList.length);
+// console.log('head:', linkedList.head);
+// console.log('tail:', linkedList.tail);
+// console.log(linkedList.toString());
 
+
+module.exports = { LinkedList };
