@@ -11,10 +11,10 @@
 ### Структуры данных
 
 <div>
-    <a href="https://github.com/R1ON/algorithm/blob/main/data_struct/linkedList.js" target="_blank">
+    <a href="https://github.com/R1ON/algorithm/blob/main/data_struct/LinkedList.js" target="_blank">
      <img src="https://img.shields.io/badge/Односвязанный%20Список-A87F4A" alt="Односвязанный Список"/>
     </a>
-    <a href="https://github.com/R1ON/algorithm/blob/main/data_struct/doublyLinkedList.js" target="_blank">
+    <a href="https://github.com/R1ON/algorithm/blob/main/data_struct/DoublyLinkedList.js" target="_blank">
      <img src="https://img.shields.io/badge/Двусвязанный%20Список-A87F4A" alt="Двусвязанный Список"/>
     </a>
 </div>
