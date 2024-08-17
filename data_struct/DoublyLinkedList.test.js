@@ -1,7 +1,7 @@
-const { LinkedList } = require('./LinkedList');
+const { DoublyLinkedList } = require('./DoublyLinkedList.js');
 const assert = require('assert');
-
-const linkedList = new LinkedList();
+ 
+const linkedList = new DoublyLinkedList();
 
 
 // appendStart
