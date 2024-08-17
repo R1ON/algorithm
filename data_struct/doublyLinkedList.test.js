@@ -1,6 +1,6 @@
-const { DoublyLinkedList } = require('./DoublyLinkedList.js');
+const { DoublyLinkedList } = require('./doublyLinkedList.js');
 const assert = require('assert');
- 
+
 const linkedList = new DoublyLinkedList();
 
 
